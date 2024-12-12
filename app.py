@@ -8,9 +8,9 @@ import cv2
 app = Flask(__name__)
 
 # Path to the model files
-ensemble1 = tf.keras.models.load_model("test_models/Resnet+.keras")
-ensemble2 = tf.keras.models.load_model("test_models/78-76.keras")
-ensemble3 = tf.keras.models.load_model("test_models/72-75.keras")
+ensemble1 = tf.keras.models.load_model("Resnet+.keras")
+ensemble2 = tf.keras.models.load_model("78-76.keras")
+ensemble3 = tf.keras.models.load_model("72-75.keras")
 
 CLASSES = ['Glass', 'Metal', 'Paperboard', 'Plastic-Polystyrene', 'Plastic-Regular']
 
