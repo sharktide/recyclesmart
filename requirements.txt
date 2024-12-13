@@ -1,0 +1,8 @@
+Flask
+tensorflow
+numpy
+requests
+gdown
+opencv-python
+werkzeug
+pathlib
