@@ -24,7 +24,7 @@ document.getElementById('predictButton').addEventListener('click', predictImage)
 function handleFileSelect(event) {
   const file = event.target.files[0];
   if (file) {
-    document.getElementById('prediction').innerText = `Selected: ${file.name}`;
+    document.getElementById('prediction').innerText = `Selected: Error`;//${file.name}`;
   }
 }
 
