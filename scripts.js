@@ -1,5 +1,5 @@
 document.getElementById('fileInput').addEventListener('change', handleFileSelect, false);
-
+console.log("program started")
 const dropArea = document.getElementById('drop-area');
 dropArea.addEventListener('dragover', (e) => {
   e.preventDefault();
