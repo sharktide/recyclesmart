@@ -31,6 +31,7 @@ function handleFileSelect(event) {
 function predictImage() {
   const fileInput = document.getElementById('fileInput');
   const file = fileInput.files[0];
+  console.log("Predicting Image:")
 
   if (!file) {
     alert('Please select an image first.');
