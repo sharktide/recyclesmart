@@ -19,7 +19,7 @@ if not os.path.exists(model_folder):
 # Function to download the zip file from the GitHub repo
 def download_models_zip():
     # Assuming your zipped file is already on GitHub, you can use `requests` to download it
-    url = 'https://github.com/sharktide/recyclesmart/raw/main/models.zip'  # Replace with actual URL
+    url = 'https://github.com/sharktide/recyclesmart-api/raw/main/models.zip'  # Replace with actual URL
     print("Downloading the models zip file...")
     r = requests.get(url)
     with open(zip_file_path, 'wb') as f:
