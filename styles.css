@@ -6,7 +6,7 @@
   
   body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
+    background-color: #689bdc;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,7 +15,7 @@
   
   .container {
     text-align: center;
-    background-color: white;
+    background-color: rgb(237, 115, 115);
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -46,7 +46,7 @@
   
   button {
     background-color: #4CAF50;
-    color: white;
+    color: rgb(232, 19, 19);
     border: none;
     padding: 10px 20px;
     cursor: pointer;
@@ -56,7 +56,7 @@
   }
   
   button:hover {
-    background-color: #45a049;
+    background-color: #db9a29;
   }
   
   #result {
@@ -64,7 +64,7 @@
   }
   
   #result h2 {
-    color: #333;
+    color: #333333;
   }
   
   #prediction {
