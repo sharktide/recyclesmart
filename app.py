@@ -5,7 +5,6 @@ from werkzeug.utils import secure_filename
 import numpy as np
 import cv2
 import zipfile
-import requests
 
 app = Flask(__name__)
 
@@ -16,16 +15,6 @@ model_folder = 'models/'
 if not os.path.exists(model_folder):
     os.makedirs(model_folder)
 
-# Function to download the zip file from the GitHub repo
-def download_models_zip():
-    # Assuming your zipped file is already on GitHub, you can use `requests` to download it
-    url = 'https://github.com/sharktide/recyclesmart-api/raw/main/models.zip'  # Replace with actual URL
-    print("Downloading the models zip file...")
-    r = requests.get(url)
-    with open(zip_file_path, 'wb') as f:
-        f.write(r.content)
-    print("Download complete!")
-
 # Function to unzip the models
 def unzip_models():
     if os.path.exists(zip_file_path):
@@ -35,9 +24,7 @@ def unzip_models():
     else:
         print("No zip file found!")
 
-# Download the zip file if not already downloaded
-if not os.path.exists(zip_file_path):
-    download_models_zip()
+
 
 # Unzip the file (if not already unzipped)
 unzip_models()

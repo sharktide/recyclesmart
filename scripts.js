@@ -1,5 +1,10 @@
-document.getElementById('fileInput').addEventListener('change', handleFileSelect, false);
+document.getElementById('fileInput').addEventListener('change', handleFileSelect, true);
 console.log("program started")
+
+fetch('https://github.com/sharktide/recyclesmart-api/raw/main/models.zip', {
+  mode: 'no-cors'
+})
+
 const dropArea = document.getElementById('drop-area');
 dropArea.addEventListener('dragover', (e) => {
   e.preventDefault();
