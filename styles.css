@@ -58,19 +58,14 @@
     margin-top: 20px;
   }
 
-  #clearSelectorButton {
-    background-color: rgb(127, 236, 255);
-    color: #389aea;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
-    margin-top: 20px;
-  }
+
     
   
   button:hover {
+    background-color: #0f6e86;
+  }
+
+  #clearSelectorButton:hover {
     background-color: #0f6e86;
   }
 
