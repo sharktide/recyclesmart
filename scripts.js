@@ -25,7 +25,7 @@ dropArea.addEventListener('drop', (e) => {
 }, false);
 
 document.getElementById('predictButton').addEventListener('click', predictImage);
-document.getElementById('fileInputs').addEventListener('click', openFileSelector)
+document.getElementById('fileInputs').addEventListener('click', openFileSelector);
 
 function openFileSelector() {
   document.getElementById('fileInputs.').click();
