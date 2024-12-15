@@ -24,11 +24,15 @@ dropArea.addEventListener('drop', (e) => {
   }
 }, false);
 
+document.getElementById('fileInputs').addEventListener('click', () => {
+  document.getElementById('fileInputs.').click();
+})
+
 document.getElementById('predictButton').addEventListener('click', predictImage);
-document.getElementById('fileInputs').addEventListener('click', openFileSelector);
+
 
 function openFileSelector() {
-  document.getElementById('fileInputs.').click();
+
 }
 
 function handleFileSelect(event) {
