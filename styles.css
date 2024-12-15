@@ -42,7 +42,9 @@
   }
   
   input[type="file"] {
-    display: none;
+    opacity: 1;
+    width: 350px;
+    height: 75px;
   }
   
   button {
