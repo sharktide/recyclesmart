@@ -24,8 +24,18 @@ dropArea.addEventListener('drop', (e) => {
   }
 }, false);
 
+el = document.getElementById('drop-area');
+if (el.onclick) {
+   el.onclick();
+   console.log("Clicked, Chrome/IE/Safari")
+} else if (el.click) {
+   el.click();
+   console.log("Clicked, FireFox/Mozilla")
+}
+
 document.getElementById('drop-area').addEventListener('click', () => {
-  document.getElementById('fileInputs.').click();
+  //document.getElementById('fileInputs.').click();
+  null
 })
 
 document.getElementById('predictButton').addEventListener('click', predictImage);
