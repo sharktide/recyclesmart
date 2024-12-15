@@ -2,12 +2,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: aquamarine;
+    background-color: rgb(127, 236, 255);
   }
   
   body {
     font-family: Arial, sans-serif;
-    background-color: #689bdc;
+    background-color: rgb(127, 236, 255);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,7 +16,7 @@
   
   .container {
     text-align: center;
-    background-color: rgb(237, 115, 115);
+    background-color: rgb(127, 236, 255);
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -29,7 +29,7 @@
   }
   
   #drop-area {
-    border: 2px dashed #4CAF50;
+    border: 2px dashed #389aea;
     border-radius: 10px;
     padding: 20px;
     margin-bottom: 20px;
@@ -46,8 +46,8 @@
   }
   
   button {
-    background-color: #4CAF50;
-    color: rgb(232, 19, 19);
+    background-color: rgb(127, 236, 255);
+    color: #389aea;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
@@ -57,7 +57,7 @@
   }
   
   button:hover {
-    background-color: #db9a29;
+    background-color: #0f6e86;
   }
   
   #result {
