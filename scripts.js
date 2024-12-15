@@ -24,18 +24,21 @@ dropArea.addEventListener('drop', (e) => {
   }
 }, false);
 
-
+document.getElementById('clearSelectorButton').addEventListener('click', clearFileSelector);
 document.getElementById('predictButton').addEventListener('click', predictImage);
 
 
-function openFileSelector() {
+const fileD = document.getElementById("fileInput")
 
+function clearFileSelector() {
+  fileD.value = "";
+  file.value = "";
 }
 
 function handleFileSelect(event) {
   const file = event.target.files[0];
   if (file) {
-    document.getElementById('prediction').innerText = `Selected: Error`;//${file.name}`;
+    document.getElementById('prediction').innerText = `Selected: ${file.name}`;
   }
 }
 
