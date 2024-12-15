@@ -24,7 +24,7 @@ dropArea.addEventListener('drop', (e) => {
   }
 }, false);
 
-document.getElementById('fileInputs').addEventListener('click', () => {
+document.getElementById('drop-area').addEventListener('click', () => {
   document.getElementById('fileInputs.').click();
 })
 
