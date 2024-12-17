@@ -12,7 +12,7 @@ app = Flask(__name__)
 # Define paths and model URLs
 model_dir = 'models/'
 model_1_filename = 'model_1.tflite'  # First model file
-model_2_filename = 'model_2.tflire'  # Second model file
+model_2_filename = 'model_2.tflite'  # Second model file
 model_1_path = os.path.join(model_dir, model_1_filename)
 model_2_path = os.path.join(model_dir, model_2_filename)
 
