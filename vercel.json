@@ -1,1 +1,18 @@
-{}
+  {
+    "version": 2,
+    "builds": [
+      {
+        "src": "app2.py",          
+        "use": "@vercel/python"   
+      }
+    ],
+    "routes": [
+      {
+        "src": "/predict",
+        "dest": "/app2.py"    
+      }
+    ],
+    "env": {
+      "FLASK_ENV": "production"  
+    }
+  }
