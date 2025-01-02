@@ -57,7 +57,7 @@ function predictImage() {
   formData.append('file', file);
 
   // Send the image file to the backend (Python/Flask) using fetch
-  fetch('https://huggingface.co/spaces/sharktide/recyclesmart-api', {
+  fetch('https://huggingface.co/spaces/sharktide/recyclesmart-api/predict', {
     method: 'POST',
     mode: 'no-cors',
     body: formData
