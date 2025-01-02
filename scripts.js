@@ -33,6 +33,7 @@ const fileD = document.getElementById("fileInput")
 function clearFileSelector() {
   fileD.value = "";
   file.value = "";
+  document.getElementById('prediction').innerText = `No result yet`;
 }
 
 function handleFileSelect(event) {
