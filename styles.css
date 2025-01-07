@@ -47,26 +47,39 @@
     height: 75px;
   }
   
-  button {
-    background-color: rgb(127, 236, 255);
-    color: #389aea;
+  #predictButton {
+    background-color: rgb(0, 0, 0);
+    color: #ffffff;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 5px;
     font-size: 16px;
     margin-top: 20px;
+    border: 2px solid #2f8be1;
+  }
+
+  #clearSelectorButton {
+    background-color: rgb(0, 0, 0);
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 20px;
+    border: 2px solid #e12f2f;
   }
 
 
     
   
-  button:hover {
-    background-color: #0f6e86;
+  #predictButton:hover {
+    background-color: rgb(255, 255, 255);
   }
 
   #clearSelectorButton:hover {
-    background-color: #0f6e86;
+    background-color: rgb(255, 255, 255);
   }
 
 
