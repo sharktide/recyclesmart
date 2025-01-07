@@ -56,7 +56,7 @@
     border-radius: 5px;
     font-size: 16px;
     margin-top: 20px;
-    border: 2px solid #2f8be1;
+    border: 4px solid #2f8be1;
   }
 
   #clearSelectorButton {
@@ -68,7 +68,7 @@
     border-radius: 5px;
     font-size: 16px;
     margin-top: 20px;
-    border: 2px solid #e12f2f;
+    border: 4px solid #e12f2f;
   }
 
 
@@ -76,10 +76,12 @@
   
   #predictButton:hover {
     background-color: rgb(255, 255, 255);
+    color: #2f8be1;
   }
 
   #clearSelectorButton:hover {
     background-color: rgb(255, 255, 255);
+    color: #e12f2f;
   }
 
 
