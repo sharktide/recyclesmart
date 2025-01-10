@@ -1,7 +1,7 @@
 // Initialize canvas for capturing webcam snapshots
 const captureCanvas = document.createElement('canvas');
 let webcamStream = null;
-let selectedFile = null;
+let selectedFile = null;  // This will store the selected file (either from file input or webcam)
 
 function startWebcam() {
   navigator.mediaDevices.getUserMedia({ video: true })
@@ -27,7 +27,7 @@ function stopWebcam() {
   }
 }
 
-// Capture snapshot from webcam and send it to the server
+// Capture snapshot from webcam and store it in selectedFile
 function captureSnapshot(videoElement) {
   captureCanvas.width = videoElement.videoWidth;
   captureCanvas.height = videoElement.videoHeight;
@@ -39,14 +39,15 @@ function captureSnapshot(videoElement) {
   captureCanvas.toBlob((blob) => {
     selectedFile = new File([blob], 'webcam_image.jpg', { type: 'image/jpeg' });
 
-    // Send the file to the server
-    sendImageToServer(selectedFile);
-
+    // Update UI to show file is selected
+    document.getElementById('prediction').innerText = 'Picture taken, ready to predict!';
+    
     // Stop the webcam after taking the snapshot
     stopWebcam();
   }, 'image/jpeg');
 }
 
+// Send the selected image to the server for prediction
 function sendImageToServer(file) {
   const formData = new FormData();
   formData.append('file', file); // Append the file to FormData
@@ -104,13 +105,12 @@ document.getElementById('clearSelectorButton').addEventListener('click', () => {
   document.getElementById('switchToFile').style.display = 'none'; // Hide 'Switch to File' button
 });
 
-// Handle file selection and show prediction
+// Handle file selection and show the file name (doesn't send to server yet)
 document.getElementById('fileInput').addEventListener('change', (event) => {
   const file = event.target.files[0];
   if (file) {
     selectedFile = file;
     document.getElementById('prediction').innerText = `Selected: ${file.name}`;
-    sendImageToServer(file);
   }
 });
 
