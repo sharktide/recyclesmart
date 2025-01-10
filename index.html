@@ -11,34 +11,35 @@
   <body>
     <div class="container">
       <h1>RecycleAI</h1>
-
-      <!-- File drop/upload section -->
+      <!-- File Upload Section -->
       <div id="drop-area">
-        <p>Drag & Drop an image here, or click below to select one</p>
+        <p>Drag & Drop an image here, or click below this text to select one</p>
         <input type="file" id="fileInput" name="fileInput" accept="image/*" />
       </div>
+      
+      <!-- Webcam Section -->
+      <div id="webcamContainer" style="text-align: center; margin-top: 20px;"></div>
 
-      <!-- Webcam section (hidden by default) -->
-      <div id="webcam-section" style="display: none;">
-        <video id="video" width="640" height="480" autoplay></video>
-        <canvas id="canvas" style="display:none;"></canvas>
-        <button id="takePhotoButton" class="button-style">Take Photo</button>
-      </div>
-
-      <!-- Switch to webcam / file upload button -->
-      <button id="switchModeButton" class="button-style">Switch to Webcam</button>
-
+      <!-- Buttons Section -->
       <div>
-        <button id="clearSelectorButton" class="button-style">Clear Selected Files</button>
+        <button id="switchToWebcam">Switch to Webcam</button>
+        <button id="switchToFile" style="display:none;">Switch to File</button>
+        <button id="takePictureButton" style="display:none;">Take Picture</button>
+      </div>
+      
+      <div>
+        <button id="clearSelectorButton">Clear Selected Files</button>
       </div>
       <div>
-        <button id="predictButton" class="button-style">Predict</button>
+        <button id="predictButton">Predict</button>
       </div>
-
+      
+      <!-- Prediction Result Section -->
       <div id="result">
         <h2>Prediction Result:</h2>
         <p id="prediction">No result yet.</p>
       </div>
+      
     </div>
     <script src="scripts.js"></script>
   </body>

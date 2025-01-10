@@ -4,18 +4,7 @@ console.log("program started");
 fetch('https://sharktide-recycleai-api.hf.space/working');
 
 const dropArea = document.getElementById('drop-area');
-const webcamSection = document.getElementById('webcam-section');
-const videoElement = document.getElementById('video');
-const canvasElement = document.getElementById('canvas');
-const takePhotoButton = document.getElementById('takePhotoButton');
-const switchModeButton = document.getElementById('switchModeButton');
 
-// Switch between file input and webcam mode
-let usingWebcam = false;
-
-switchModeButton.addEventListener('click', toggleMode);
-
-// Drag-and-drop area event listeners
 dropArea.addEventListener('dragover', (e) => {
   e.preventDefault();
   dropArea.style.backgroundColor = '#e1ffe1';
@@ -36,52 +25,18 @@ dropArea.addEventListener('drop', (e) => {
 
 document.getElementById('clearSelectorButton').addEventListener('click', clearFileSelector);
 document.getElementById('predictButton').addEventListener('click', predictImage);
+document.getElementById('switchToWebcam').addEventListener('click', switchToWebcam);  // New button listener
 
-// File input field reference
 const fileD = document.getElementById("fileInput");
 
-// Webcam setup
-navigator.mediaDevices.getUserMedia({ video: true })
-  .then(stream => {
-    videoElement.srcObject = stream;
-    videoElement.style.display = 'none'; // Initially hide the video
-    canvasElement.style.display = 'none'; // Initially hide the canvas
-  })
-  .catch(error => {
-    console.error("Error accessing webcam: ", error);
-    alert('Error accessing webcam.');
-  });
+let webcamStream = null;
+let captureCanvas = document.createElement("canvas");
 
-// Toggle between file input and webcam mode
-function toggleMode() {
-  usingWebcam = !usingWebcam;
-
-  if (usingWebcam) {
-    // Switch to webcam mode
-    dropArea.style.display = 'none';
-    document.getElementById('fileInput').style.display = 'none';
-    webcamSection.style.display = 'block';
-    switchModeButton.innerText = 'Switch to File Upload'; // Change button text
-    videoElement.style.display = 'block'; // Show the video element
-  } else {
-    // Switch to file input mode
-    dropArea.style.display = 'block';
-    document.getElementById('fileInput').style.display = 'block';
-    webcamSection.style.display = 'none';
-    switchModeButton.innerText = 'Switch to Webcam'; // Change button text
-    videoElement.style.display = 'none'; // Hide the video element
-  }
-}
-
-// Clear file selector
 function clearFileSelector() {
   fileD.value = "";
   document.getElementById('prediction').innerText = `No result yet`;
-  canvasElement.style.display = 'none';
-  videoElement.style.display = 'none'; // Hide video if using webcam
 }
 
-// Handle file selection
 function handleFileSelect(event) {
   const file = event.target.files[0];
   if (file) {
@@ -89,68 +44,71 @@ function handleFileSelect(event) {
   }
 }
 
-// Capture a photo from the webcam feed
-takePhotoButton.addEventListener('click', () => {
-  // Set canvas dimensions to match video dimensions
-  canvasElement.width = videoElement.videoWidth;
-  canvasElement.height = videoElement.videoHeight;
+function switchToWebcam() {
+  // Hide the file input and show webcam controls
+  document.getElementById('fileInput').style.display = 'none';
+  document.getElementById('drop-area').style.display = 'none';
+  document.getElementById('switchToWebcam').style.display = 'none';
+  document.getElementById('switchToFile').style.display = 'inline-block';  // Show the "Switch to File" button
+  document.getElementById('takePictureButton').style.display = 'inline-block'; // Show "Take Picture" button
 
-  // Get the context of the canvas and draw the current frame from the video
-  const context = canvasElement.getContext('2d');
-  context.drawImage(videoElement, 0, 0, canvasElement.width, canvasElement.height);
+  startWebcam();
+}
 
-  // Convert the captured image to a Data URL (PNG format)
-  const imageData = canvasElement.toDataURL('image/png');
+function startWebcam() {
+  // Start webcam
+  navigator.mediaDevices.getUserMedia({ video: true })
+    .then((stream) => {
+      webcamStream = stream;
+      const videoElement = document.createElement('video');
+      videoElement.srcObject = stream;
+      videoElement.play();
+      
+      // Attach video to the DOM
+      const webcamContainer = document.getElementById('webcamContainer');
+      webcamContainer.innerHTML = '';  // Clear previous content
+      webcamContainer.appendChild(videoElement);
 
-  // Hide the video element and display the canvas with the captured image
-  videoElement.style.display = 'none';
-  canvasElement.style.display = 'block';
+      // After the video is playing, create a snapshot when the user clicks "Take Picture"
+      document.getElementById('takePictureButton').addEventListener('click', () => {
+        captureSnapshot(videoElement);
+      });
+    })
+    .catch((err) => {
+      console.log("Error accessing webcam:", err);
+      alert("Failed to access webcam.");
+    });
+}
 
-  // Convert the Data URL to a Blob (binary data of the image)
-  const dataUrlToBlob = (dataUrl) => {
-    const byteString = atob(dataUrl.split(',')[1]);
-    const arrayBuffer = new ArrayBuffer(byteString.length);
-    const uint8Array = new Uint8Array(arrayBuffer);
-    for (let i = 0; i < byteString.length; i++) {
-      uint8Array[i] = byteString.charCodeAt(i);
-    }
-    return new Blob([uint8Array], { type: 'image/png' });
-  };
+function captureSnapshot(videoElement) {
+  captureCanvas.width = videoElement.videoWidth;
+  captureCanvas.height = videoElement.videoHeight;
 
-  const imageBlob = dataUrlToBlob(imageData);
-  const file = new File([imageBlob], 'photo.png', { type: 'image/png' });
+  const ctx = captureCanvas.getContext('2d');
+  ctx.drawImage(videoElement, 0, 0, captureCanvas.width, captureCanvas.height);
 
-  // Create a new DataTransfer object to simulate the file selection
-  const dataTransfer = new DataTransfer();
-  dataTransfer.items.add(file);
+  // Convert the canvas to a Blob (image file)
+  captureCanvas.toBlob((blob) => {
+    const file = new File([blob], 'webcam_image.png', { type: 'image/png' });
+    
+    // Call the function to send the image
+    sendImageToServer(file);
+    
+    // Optionally, stop the webcam stream
+    webcamStream.getTracks().forEach(track => track.stop());
+  }, 'image/png');
+}
 
-  // Set the files on the file input element using the DataTransfer object
-  const fileInput = document.getElementById('fileInput');
-  fileInput.files = dataTransfer.files;
-
-  // Update the UI to show the user that a photo has been taken
-  document.getElementById('prediction').innerText = `Captured a photo!`;
-});
-
-// Predict image from selected file
-function predictImage() {
-  const fileInput = document.getElementById('fileInput');
-  const file = fileInput.files[0];
-  console.log("Predicting Image:");
-
-  if (!file) {
-    alert('Please select an image first.');
-    return;
-  }
-
-  // Create FormData to send to backend
+function sendImageToServer(file) {
   const formData = new FormData();
   formData.append('file', file);
 
-  // Send the image to backend (Python/Flask)
+  // Log FormData content to ensure the file is being added correctly
+  console.log('Sending file:', file.name);
+
   fetch('https://sharktide-recycleai-api.hf.space/predict', {
     method: 'POST',
-    body: formData  // Do not set 'enctype' here, FormData will handle it
+    body: formData // FormData will automatically set the correct Content-Type
   })
   .then(response => {
     if (!response.ok) {
@@ -167,3 +125,51 @@ function predictImage() {
     document.getElementById('prediction').innerText = 'Error predicting image.';
   });
 }
+
+function predictImage() {
+  const fileInput = document.getElementById('fileInput');
+  const file = fileInput.files[0];
+
+  if (!file) {
+    alert('Please select an image first.');
+    return;
+  }
+
+  // Create FormData to send to backend
+  const formData = new FormData();
+  formData.append('file', file);
+
+  // Log FormData content to make sure the file is being added correctly
+  console.log('Sending file:', file.name);
+
+  // Send the image to backend (Python/Flask/FastAPI)
+  fetch('https://sharktide-recycleai-api.hf.space/predict', {
+    method: 'POST',
+    body: formData // FormData will automatically set the correct Content-Type
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Bad request or server error');
+    }
+    return response.json();
+  })
+  .then(data => {
+    // Display prediction result
+    document.getElementById('prediction').innerText = `Prediction: ${data.prediction}`;
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    document.getElementById('prediction').innerText = 'Error predicting image.';
+  });
+}
+
+document.getElementById('switchToFile').addEventListener('click', () => {
+  // Switch back to file upload
+  document.getElementById('fileInput').style.display = 'inline-block';
+  document.getElementById('drop-area').style.display = 'block';
+  document.getElementById('switchToWebcam').style.display = 'inline-block';
+  document.getElementById('switchToFile').style.display = 'none';
+  document.getElementById('takePictureButton').style.display = 'none';
+  const webcamContainer = document.getElementById('webcamContainer');
+  webcamContainer.innerHTML = '';  // Remove webcam stream
+});
