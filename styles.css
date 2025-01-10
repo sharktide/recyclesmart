@@ -98,18 +98,11 @@ input[type="file"] {
   display: flex;
   justify-content: center;
   margin-top: 20px;
-  background-color: transparent; /* Ensure there's no background color around the webcam */
 }
 
 video {
   width: 100%;
-  max-width: 100%; /* Ensure the video width fits within the container */
+  max-width: 400px;
+  border: 4px solid #389aea;
   border-radius: 10px;
-  background-color: transparent; /* Prevent any background color */
-}
-
-#capturedImage {
-  max-width: 100%;
-  border: 0;
-  background-color: transparent;
 }
