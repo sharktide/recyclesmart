@@ -150,15 +150,20 @@ function predictImage() {
   // Send the image to backend (Python/Flask)
   fetch('https://sharktide-recycleai-api.hf.space/predict', {
     method: 'POST',
-    enctype: "multipart/form-data",
-    body: formData
+    body: formData  // Do not set 'enctype' here, FormData will handle it
   })
-  .then(response => response.json())
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Bad request or server error');
+    }
+    return response.json();
+  })
   .then(data => {
     // Display prediction result
     document.getElementById('prediction').innerText = `Prediction: ${data.prediction}`;
   })
   .catch(error => {
+    console.error('Error:', error);
     document.getElementById('prediction').innerText = 'Error predicting image.';
   });
 }
