@@ -1,7 +1,7 @@
 document.getElementById('fileInput').addEventListener('change', handleFileSelect, true);
-console.log("program started")
+console.log("program started");
 
-fetch('https://sharktide-recycleai-api.hf.space/working')
+fetch('https://sharktide-recycleai-api.hf.space/working');
 
 const dropArea = document.getElementById('drop-area');
 const webcamSection = document.getElementById('webcam-section');
@@ -91,17 +91,22 @@ function handleFileSelect(event) {
 
 // Capture a photo from the webcam feed
 takePhotoButton.addEventListener('click', () => {
+  // Set canvas dimensions to match video dimensions
   canvasElement.width = videoElement.videoWidth;
   canvasElement.height = videoElement.videoHeight;
+
+  // Get the context of the canvas and draw the current frame from the video
   const context = canvasElement.getContext('2d');
   context.drawImage(videoElement, 0, 0, canvasElement.width, canvasElement.height);
+
+  // Convert the captured image to a Data URL (PNG format)
   const imageData = canvasElement.toDataURL('image/png');
 
-  // Hide video and show canvas
+  // Hide the video element and display the canvas with the captured image
   videoElement.style.display = 'none';
   canvasElement.style.display = 'block';
 
-  // Optionally, set the image data as the selected file
+  // Convert the Data URL to a Blob (binary data of the image)
   const dataUrlToBlob = (dataUrl) => {
     const byteString = atob(dataUrl.split(',')[1]);
     const arrayBuffer = new ArrayBuffer(byteString.length);
@@ -115,11 +120,15 @@ takePhotoButton.addEventListener('click', () => {
   const imageBlob = dataUrlToBlob(imageData);
   const file = new File([imageBlob], 'photo.png', { type: 'image/png' });
 
-  // Set file to the file input field (optional: simulate file input for backend)
-  const fileInput = document.getElementById('fileInput');
-  fileInput.files = new FileList([file]);
+  // Create a new DataTransfer object to simulate the file selection
+  const dataTransfer = new DataTransfer();
+  dataTransfer.items.add(file);
 
-  // Show the result to the user
+  // Set the files on the file input element using the DataTransfer object
+  const fileInput = document.getElementById('fileInput');
+  fileInput.files = dataTransfer.files;
+
+  // Update the UI to show the user that a photo has been taken
   document.getElementById('prediction').innerText = `Captured a photo!`;
 });
 
