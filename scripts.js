@@ -39,9 +39,20 @@ function captureSnapshot(videoElement) {
   captureCanvas.toBlob((blob) => {
     selectedFile = new File([blob], 'webcam_image.jpg', { type: 'image/jpeg' });
 
+    // Create an image element to display the snapshot
+    const imgElement = document.createElement('img');
+    imgElement.src = URL.createObjectURL(blob); // Set the source to the blob URL
+    imgElement.style.maxWidth = '100%'; // Make sure the image fits within the container
+    imgElement.style.borderRadius = '10px'; // Optional styling for the image
+    
+    // Add the image to the UI (display it below the webcam container)
+    const resultContainer = document.getElementById('result');
+    resultContainer.innerHTML = '<h2>Captured Image:</h2>'; // Optional heading
+    resultContainer.appendChild(imgElement); // Append the image to the result container
+    
     // Update UI to show file is selected
     document.getElementById('prediction').innerText = 'Picture taken, ready to predict!';
-    
+
     // Stop the webcam after taking the snapshot
     stopWebcam();
   }, 'image/jpeg');
