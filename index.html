@@ -7,30 +7,39 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" href="favicon2.ico" type="image/x-icon">
-
-    
   </head>
   <body>
     <div class="container">
       <h1>RecycleAI</h1>
+
+      <!-- File drop/upload section -->
       <div id="drop-area">
-        <p>Drag & Drop an image here, or click below this text to select one</p>
+        <p>Drag & Drop an image here, or click below to select one</p>
         <input type="file" id="fileInput" name="fileInput" accept="image/*" />
       </div>
+
+      <!-- Webcam section (hidden by default) -->
+      <div id="webcam-section" style="display: none;">
+        <video id="video" width="640" height="480" autoplay></video>
+        <canvas id="canvas" style="display:none;"></canvas>
+        <button id="takePhotoButton" class="button-style">Take Photo</button>
+      </div>
+
+      <!-- Switch to webcam / file upload button -->
+      <button id="switchModeButton" class="button-style">Switch to Webcam</button>
+
       <div>
-      <button id="clearSelectorButton">Clear Selected Files</button>
+        <button id="clearSelectorButton" class="button-style">Clear Selected Files</button>
       </div>
       <div>
-      <button id="predictButton">Predict</button>
+        <button id="predictButton" class="button-style">Predict</button>
       </div>
+
       <div id="result">
         <h2>Prediction Result:</h2>
         <p id="prediction">No result yet.</p>
       </div>
-      
     </div>
-    <script src='scripts.js'></script>
+    <script src="scripts.js"></script>
   </body>
-  
 </html>
-
