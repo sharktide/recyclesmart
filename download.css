@@ -80,6 +80,11 @@ nav {
     background-color: #333;
     padding: 10px 0;
     text-align: center;
+    position: sticky; /* Makes the navbar stick to the top */
+    top: 0; /* Ensures it's at the very top of the page */
+    width: 100%; /* Makes sure it spans the full width of the page */
+    z-index: 1000; /* Keeps the navbar on top of other content */
+    box-sizing: border-box; /* Ensures padding is included in the width calculation */
 }
 
 nav ul {
