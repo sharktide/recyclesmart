@@ -16,7 +16,7 @@
 
       {
         "source": "/github",
-        "destination": "https://github.com/sharktide/recyclesmart"
+        "destination": "/github.html"
       },
 
       {
