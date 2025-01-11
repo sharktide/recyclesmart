@@ -6,7 +6,7 @@
       },
       {
         "source": "/download",
-        "destination": "/download.html"
+        "destination": "/pages/download.html"
       },
 
       {
