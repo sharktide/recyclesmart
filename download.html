@@ -9,37 +9,42 @@
     <link rel="icon" href="favicon2.ico" type="image/x-icon">
   </head>
   <body>
-    <div class="topnav">
-        <a class="active" href="/download">Download</a>
-        <a href="/">Home</a>
-    </div>
 
+    <!-- Navigation Bar -->
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/download" class="active">Download</a></li>
+        <li><a href="https://github.com/sharktide/recyclesmart" target="_blank">Github</a></li>
+        <li><a href="https://huggingface.co/spaces/sharktide/recycleai-api/tree/main">API</a></li>
+      </ul>
+    </nav>
 
+    <!-- Main Content -->
     <div class="container">
       <h1>RecycleAI Downloads</h1>
 
-                    <div>
-                        <button id="windowsButton">-Windows(Installer)-</button>
-                    </div>
+      <div>
+        <button id="windowsButton">-Windows(Installer)-</button>
+      </div>
 
-                    <div>
-                        <button id="zippedButton">- Windows (Zipped) -</button>
-                    </div>
+      <div>
+        <button id="zippedButton">- Windows (Zipped) -</button>
+      </div>
 
-                    <div>
-                        <button id="macButton">-      macOS       -</button>
-                    </div>
-                    
-                    <div>
-                        <button id="iosButton">-       iOS        -</button>
-                    </div>
+      <div>
+        <button id="macButton">-      macOS       -</button>
+      </div>
 
-                    <div>
-                    <button id="androidButton">-   Andriod(APK)   -</button>   
-                    </div>
+      <div>
+        <button id="iosButton">-       iOS        -</button>
+      </div>
 
-
+      <div>
+        <button id="androidButton">-   Andriod(APK)   -</button>
+      </div>
     </div>
+
     <script src="download.js"></script>
   </body>
 </html>

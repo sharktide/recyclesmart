@@ -75,30 +75,50 @@
   }
   
  
- 
-
-
-  
-  .topnav {
-    overflow: hidden;
+/* Navbar Styling */
+nav {
     background-color: #333;
-  }
-  
-  .topnav a {
-    float: left;
-    color: #f2f2f2;
+    padding: 10px 0;
     text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-  }
-  
-  .topnav a:hover {
-    background-color: #ddd;
-    color: black;
-  }
-  
-  .topnav a.active {
-    background-color: #04AA6D;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Use flexbox for horizontal layout */
+    justify-content: center; /* Centers the items */
+}
+
+nav ul li {
+    margin: 0 20px; /* Adds space between each item */
+}
+
+nav ul li a {
     color: white;
-  }
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 15px; /* Adds some padding to make the links look better */
+    display: inline-block;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Active Link Styling */
+nav ul li a.active {
+    color: yellow; /* Highlight the active page with a different color */
+}
+
+/* Responsive Navbar */
+@media (max-width: 600px) {
+    nav ul {
+        flex-direction: column; /* Stack the items vertically on small screens */
+        text-align: left;
+    }
+
+    nav ul li {
+        margin-bottom: 10px; /* Add space between stacked items */
+    }
+}
