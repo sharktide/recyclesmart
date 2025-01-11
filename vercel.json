@@ -7,7 +7,24 @@
       {
         "source": "/download",
         "destination": "/download.html"
+      },
+
+      {
+        "source": "/home",
+        "destination": "/index.html"
+      },
+
+      {
+        "source": "/github",
+        "destination": "https://github.com/sharktide/recyclesmart"
+      },
+
+      {
+        "source": "/api",
+        "destination": "https://huggingface.co/spaces/sharktide/recycleai-api/tree/main"
       }
+
+      
     ]
   }
   
