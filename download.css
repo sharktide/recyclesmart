@@ -1,80 +1,19 @@
+/* Reset all elements */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: rgb(127, 236, 255);
-  }
-  
-  body {
+}
+
+/* Body Styling */
+body {
     font-family: Arial, sans-serif;
     background-color: rgb(127, 236, 255);
+    min-height: 100vh; /* Make sure the body takes full height */
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .container {
-    text-align: center;
-    background-color: rgb(127, 236, 255);
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    max-width: 600px;
-  }
-  
-  h1 {
-    color: #333;
-  }
-  
-  
- 
- 
-  #windowsButton {
-    background-color: rgb(0, 0, 0);
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
-    margin-top: 20px;
-    border: 4px solid #ce91eb;
-  }
-  
-  
-  #iosButton,
-  #androidButton,
-  #macButton,
-  #zippedButton {
-    background-color: rgb(150, 150, 150);
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
-    margin-top: 20px;
-    border: 4px solid #ffffff;
-  }
-  
- 
-  
-  #zippedButton:hover,
-  #macButton:hover,
-  #androidButton:hover,
-  #iosButton:hover {
-    background-color: rgb(150, 150, 150);
-    color: #ffffff;
-  }
-  
-  #windowsButton:hover {
-    background-color: rgb(255, 255, 255);
-    color: #ce91eb;
-  }
-  
- 
+    flex-direction: column; /* Stack content vertically */
+}
+
 /* Navbar Styling */
 nav {
     background-color: #333;
@@ -87,6 +26,7 @@ nav {
     box-sizing: border-box; /* Ensures padding is included in the width calculation */
 }
 
+/* Navbar Links Styling */
 nav ul {
     list-style-type: none;
     margin: 0;
@@ -114,6 +54,55 @@ nav ul li a:hover {
 /* Active Link Styling */
 nav ul li a.active {
     color: yellow; /* Highlight the active page with a different color */
+}
+
+/* Container Styling for Content */
+.container {
+    text-align: center;
+    background-color: rgb(127, 236, 255);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 600px;
+    margin-top: 100px; /* Give space for the fixed navbar */
+}
+
+/* Button Styling */
+#windowsButton {
+    background-color: rgb(0, 0, 0);
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 20px;
+    border: 4px solid #ce91eb; /* This styling is kept the same as you requested */
+}
+
+/* Other Buttons Styling */
+#iosButton, #androidButton, #macButton, #zippedButton {
+    background-color: rgb(150, 150, 150);
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 20px;
+    border: 4px solid #ffffff;
+}
+
+/* Button Hover Effects */
+#zippedButton:hover, #macButton:hover, #androidButton:hover, #iosButton:hover {
+    background-color: rgb(150, 150, 150);
+    color: #ffffff;
+}
+
+#windowsButton:hover {
+    background-color: rgb(255, 255, 255);
+    color: #ce91eb;
 }
 
 /* Responsive Navbar */
