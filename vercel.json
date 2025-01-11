@@ -16,7 +16,7 @@
 
       {
         "source": "/github",
-        "destination": "/github.html"
+        "destination": "/github.js"
       },
 
       {
