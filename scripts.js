@@ -55,7 +55,7 @@ function sendImageToServer(file) {
   // Log FormData contents to ensure file is added correctly
   console.log('Sending file:', file);
 
-  fetch('https://sharktide-recycleai-api.hf.space/predict', {
+  fetch('https://sharktide-recycleai-api.hf.space/predict/recyclebot0accuracy', {
     method: 'POST',
     body: formData // The browser automatically sets the Content-Type header to multipart/form-data
   })
