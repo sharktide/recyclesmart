@@ -126,6 +126,12 @@ input[type="file"] {
   color: #2f8be1;
 }
 
+#switchToWebcam,
+#switchToFile,
+#takePictureButton {
+  border: 4px solid #2f8be1;
+}
+
 #predictButton:hover {
   background-color: rgb(255, 255, 255);
   color: #2bc067;
