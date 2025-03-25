@@ -112,11 +112,14 @@ nav ul li a.active {
     color: #ffffff;
 }
 
-#windowsButton:hover, #macButton:hover, {
+#windowsButton:hover {
     background-color: rgb(255, 255, 255);
     color: #ce91eb;
 }
-
+#macButton:hover {
+    background-color: rgb(255, 255, 255);
+    color: #f54281;
+}
 /* Responsive Navbar */
 @media (max-width: 600px) {
     nav ul {
