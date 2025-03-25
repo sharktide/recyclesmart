@@ -47,7 +47,7 @@ document.getElementById('zippedButton').addEventListener('click', () => {
 document.getElementById('macButton').addEventListener('click', () => {
     // Function to send the fetch request and handle the redirect
     function redirectToUrlmac() {
-        fetch('https://sharktide-recycleai-latest-windows.hf.space/mac/url')  // Replace with your URL
+        fetch('https://sharktide-recycleai-latest-windows.hf.space/mac-arm/url')  // Replace with your URL
         .then(response => response.json())    // Parse the response as JSON
         .then(data => {
             if (data.url) {
@@ -62,9 +62,8 @@ document.getElementById('macButton').addEventListener('click', () => {
     }
     
     // Call the function
-    alert("Coming Soon!")
-    
-        
+    alert("This application is unisgned. You may have to bypass gatekeeper to use this.")
+    redirectToUrlmac()
 });
 
 document.getElementById('iosButton').addEventListener('click', () => {
