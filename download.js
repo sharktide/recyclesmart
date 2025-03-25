@@ -63,7 +63,7 @@ document.getElementById('macButton').addEventListener('click', () => {
     
     // Call the function
     alert("This application is unisgned. You may have to bypass gatekeeper to use this.")
-    redirectToUrlmac()
+    window.location.href = "https://github.com/sharktide/recycleAI-desktop-macOS/releases/download/v1.2.1/RecycleAI.macOS-1.2.1-arm64.dmg";  // Redirect the user to the URL from the response
 });
 
 document.getElementById('iosButton').addEventListener('click', () => {
