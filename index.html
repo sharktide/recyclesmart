@@ -9,7 +9,6 @@
     <link rel="icon" href="favicon2.ico" type="image/x-icon">
   </head>
   <body>
-    <!-- Navbar (same as before) -->
     <nav>
       <ul>
         <li><a href="/" class="active">Home</a></li>
@@ -21,36 +20,35 @@
 
     <div class="container">
       <h1>RecycleAI</h1>
-      <!-- File Upload Section -->
+
       <div id="drop-area">
         <p>Drag & Drop an image here, or click below this text to select one</p>
         <input type="file" id="fileInput" name="fileInput" accept="image/*" />
       </div>
-      
-      <!-- Webcam Section -->
+
       <div id="webcamContainer" style="text-align: center; margin-top: 20px;"></div>
 
-      <!-- Buttons Section -->
       <div>
         <button id="switchToWebcam">Switch to Webcam</button>
         <button id="switchToFile" style="display:none;">Switch to File</button>
         <button id="takePictureButton" style="display:none;">Take Picture</button>
       </div>
-      
+
       <div>
         <button id="clearSelectorButton">Clear Selected Files</button>
       </div>
       <div>
         <button id="predictButton">Predict</button>
       </div>
-      
-      <!-- Prediction Result Section -->
+
       <div id="result">
         <h2>Prediction Result:</h2>
         <p id="prediction">No result yet.</p>
       </div>
-      
+
+      <canvas id="canvas"></canvas> <!-- Canvas to draw bounding boxes -->
     </div>
+
     <script src="scripts.js"></script>
   </body>
 </html>
