@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RecycleAI</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="legacy.css">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" href="favicon2.ico" type="image/x-icon">
   </head>
   <body>
-    <header>Attention: Thermo Fisher JIC Reviewers: This site was updated on 06/21/25 for STYLING changes only. You can view the old site <a href="/legacy">here</a></header>
+    <header>Attention: You are on the legacy version of the site that looks ugly. Go to the <a href="/">new site</a> for imporved styling as of 06/21/25</header>
     <nav>
       <ul>
         <li><a href="/" class="active">Home</a></li>
@@ -26,8 +26,6 @@
         <p>Drag & Drop an image here, or click below this text to select one</p>
         <input type="file" id="fileInput" name="fileInput" accept="image/*" />
       </div>
-
-      <p id="fileStatus" style="margin-top: 10px; font-style: italic; color: #555;"></p>
 
       <div id="webcamContainer" style="text-align: center; margin-top: 20px;"></div>
 
@@ -49,12 +47,9 @@
         <p id="prediction">No result yet.</p>
       </div>
 
-      <div id="spinner"></div>
-
-      <canvas id="canvas"></canvas>
-
+      <canvas id="canvas"></canvas> <!-- Canvas to draw bounding boxes -->
     </div>
 
-    <script src="scripts.js"></script>
+    <script src="legacy.js"></script>
   </body>
 </html>

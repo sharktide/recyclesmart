@@ -1,3 +1,10 @@
+function warn() {
+  "use strict";
+
+  setTimeout(console.log.bind(console, "\n%cStop!", "color:red;font-size:50px;font-weight:bold;text-shadow: 1px 1px 0px black, 1px -1px 0px black, -1px 1px 0px black, -1px -1px 0px black;"));
+  setTimeout(console.log.bind(console, "Using this console may allow attackers to impersonate you and steal your information using an attack called Self-XSS.Do not enter or paste code that you do not understand."));
+}
+
 document.getElementById('windowsButton').addEventListener('click', () => {
     // Function to send the fetch request and handle the redirect
     function redirectToUrlwindows() {
@@ -84,7 +91,6 @@ document.getElementById('iosButton').addEventListener('click', () => {
     
     // Call the function
     alert("Coming Soon!")
-    
         
 });
 
@@ -107,6 +113,7 @@ document.getElementById('androidButton').addEventListener('click', () => {
     
     // Call the function
     alert("Coming Soon!")
-    
         
 });
+
+window.onload = warn;
